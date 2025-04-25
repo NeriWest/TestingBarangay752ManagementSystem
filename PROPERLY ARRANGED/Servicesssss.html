@@ -1,0 +1,862 @@
+<?php
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header('Location: ../../controller/admin/adminDashboardController.php');
+    exit();
+}
+
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$csrfToken = $_SESSION['csrf_token'];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barangay 752 | Official Website</title>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Design CSS -->
+  <link rel="stylesheet" href="../../css/loginBootstrap.css">
+
+  <style>
+    /* Your original navbar styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+      --primary-blue: #1E3A8A;
+      --light-blue: #EFF6FF;
+      --dark-gray: #1e293b;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      /* fallback color */
+      background-image: url('../img/Background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding-top: 70px;
+      /* For fixed navbar */
+    }
+
+    /* Navbar Styles */
+    .navbar-custom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #1E3A8A;
+      transition: all 0.3s ease;
+      padding: 1rem 0;
+    }
+
+    .navbar-custom.scrolled {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 0.5rem 0;
+    }
+
+    .navbar-brand-custom {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .navbar-logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .navbar-title {
+      margin-left: 0.5rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .nav-link-custom {
+      position: relative;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin: 0 0.25rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .nav-link-custom:hover {
+      color: #BFDBFE;
+    }
+
+    .nav-link-custom::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link-custom:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-link-custom:hover .nav-chevron {
+      opacity: 1;
+    }
+
+    .nav-chevron {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      margin-left: 0.25rem;
+    }
+
+    .btn-login {
+      background-color: white;
+      color: #1E3A8A;
+      font-weight: 500;
+      margin-left: 1rem;
+    }
+
+    /* Login button styles - removes underline and maintains consistency */
+    .btn-login {
+      background-color: white;
+      color: #1E3A8A;
+      font-weight: 500;
+      margin-left: 1rem;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      transition: all 0.3s ease;
+      text-decoration: none !important;
+      /* Ensures no underline */
+      display: inline-block;
+      /* For proper button sizing */
+    }
+
+    .btn-login:hover {
+      background-color: #EFF6FF;
+      text-decoration: none !important;
+    }
+
+    /* Specifically targets the link inside the button */
+    .btn-login a {
+      color: inherit;
+      /* Inherits color from parent button */
+      text-decoration: none !important;
+      /* Removes underline */
+      display: block;
+      /* Makes the entire button area clickable */
+      width: 100%;
+      height: 100%;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .mobile-nav-link:hover {
+      background-color: #3B82F6;
+      text-decoration: none;
+    }
+
+    /* Login Container */
+    .login-container {
+      min-height: calc(100vh - 70px - 150px);
+      display: flex;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border: none;
+    }
+
+    .login-header {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+
+    .login-header img {
+      height: 80px;
+      margin-bottom: 1rem;
+    }
+
+    .login-header h1 {
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 1.75rem;
+    }
+
+    /* Your exact footer styles */
+    .footer {
+      background-color: #1e293b;
+      color: white;
+      padding: 3rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .footer-map {
+      height: 12rem;
+      width: 100%;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: #334155;
+      margin-bottom: 1rem;
+      transition: height 0.3s ease;
+    }
+
+    .footer-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .footer-contact-item,
+    .footer-hours-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-icon {
+      color: #60a5fa;
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: #60a5fa;
+    }
+
+    .footer-quick-links {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .footer-quick-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-quick-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-quick-links a:hover {
+      color: #60a5fa;
+    }
+
+    .footer-quick-links a::before {
+      content: "›";
+      color: #60a5fa;
+      margin-right: 0.5rem;
+      transition: margin-right 0.2s ease;
+    }
+
+    .footer-quick-links a:hover::before {
+      margin-right: 0.7rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-link {
+      background-color: #1e40af;
+      color: white;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: #1e3a8a;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-divider {
+      height: 1px;
+      background-color: #334155;
+      margin: 2rem 0;
+      transition: margin 0.3s ease;
+    }
+
+    .footer-copyright {
+      color: #94a3b8;
+      text-align: center;
+      transition: font-size 0.3s ease;
+    }
+
+    .footer-logo-container {
+      margin-top: 2rem;
+      width: 100%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .footer-logo-img {
+      height: auto;
+      max-height: 120px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    @media (min-width: 1200px) {
+      .footer-logo-container {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        width: auto;
+        margin-top: 0;
+      }
+
+      .footer-logos {
+        justify-content: flex-end;
+      }
+
+      .footer-logo-img {
+        max-height: 150px;
+        max-width: 150px;
+      }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      .footer-logo-container {
+        position: static;
+        margin: 2rem auto 0;
+        max-width: 300px;
+      }
+
+      .footer-logos {
+        justify-content: center;
+      }
+
+      .footer-logo-img {
+        max-height: 110px;
+        max-width: 110px;
+      }
+
+      .footer-map {
+        height: 10rem;
+      }
+    }
+
+    @media (max-width: 991.98px) and (min-width: 768px) {
+      .footer-logo-img {
+        max-height: 100px;
+        max-width: 100px;
+      }
+
+      .footer-map {
+        height: 9rem;
+      }
+
+      .footer-divider {
+        margin: 1.5rem 0;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .footer-logo-img {
+        max-height: 90px;
+        max-width: 90px;
+      }
+
+      .footer-map {
+        height: 8rem;
+      }
+
+      .footer-title {
+        font-size: 1.1rem;
+      }
+
+      .footer-copyright {
+        font-size: 0.9rem;
+      }
+
+      .footer-divider {
+        margin: 1rem 0;
+      }
+    }
+
+    @media (max-width: 399.98px) {
+      .footer-logos {
+        gap: 1rem;
+      }
+
+      .footer-logo-img {
+        max-height: 80px;
+        max-width: 80px;
+      }
+    }
+
+    /* Text Input Styles - Reusable Component */
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      border: none;
+      border-bottom: 1px solid #dee2e6;
+      border-radius: 0;
+      padding: 0.75rem 0;
+      font-weight: 400;
+      color: var(--primary-blue);
+      background: transparent;
+      transition: all 0.3s ease;
+      box-shadow: none !important;
+      width: 100%;
+    }
+
+    .form-control:focus {
+      border-bottom: 1px solid var(--primary-blue);
+      box-shadow: none !important;
+      outline: none;
+    }
+
+    .form-label {
+      position: absolute;
+      top: 0.75rem;
+      left: 0;
+      font-size: 0.95rem;
+      color: #6c757d;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .form-control:focus + .form-label,
+    .form-control:not(:placeholder-shown) + .form-label {
+      top: -0.75rem;
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+
+    /* Error Message Styles */
+    .error-message {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .form-control.is-invalid ~ .error-message {
+      display: block;
+    }
+
+    /* Password Toggle Styles */
+    .password-input-group {
+      position: relative;
+    }
+
+    .password-toggle-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #6c757d;
+      padding: 0 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .password-toggle-btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* Links Styling (Copied from previous design, adapted to your colors) */
+    .form-links {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .form-links a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .form-links a:hover {
+      color: #dc3545;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar WITH logo -->
+  <nav class="navbar navbar-custom navbar-expand-lg" id="mainNavbar">
+    <div class="container">
+      <!-- Logo -->
+      <div class="navbar-brand-custom" href="#">
+        <img src="../../img/Barangay Logo.png" alt="Barangay 752 Logo" class="navbar-logo">
+        <span class="navbar-title">BARANGAY 752 ZONE-81</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link-custom" href="../../index.php">
+              <span>Home</span>
+              <i class="bi bi-chevron-right nav-chevron"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-custom" href="AboutUsBootstrap.php">
+              <span>About Us</span>
+              <i class="bi bi-chevron-right nav-chevron"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-custom" href="serviceBootstrap.php">
+              <span>Services</span>
+              <i class="bi bi-chevron-right nav-chevron"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="btn btn-login"><a href="login.php">Log In</a></button>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="navbar-toggler-container">
+        <button class="navbar-toggler d-lg-none" type="button" id="mobileMenuButton">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="container d-lg-none mobile-menu" id="mobileMenu" style="display: none;">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="mobile-nav-link" href="../../index.php">
+            <span>Home</span>
+            <i class="bi bi-chevron-right ms-auto"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="mobile-nav-link" href="AboutUsBootstrap.php">
+            <span>About Us</span>
+            <i class="bi bi-chevron-right ms-auto"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="mobile-nav-link" href="serviceBootstrap.php">
+            <span>Services</span>
+            <i class="bi bi-chevron-right ms-auto"></i>
+          </a>
+        </li>
+        <li class="nav-item mt-2">
+          <button class="btn btn-login w-100"><a href="login.php">Log In</a></button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="login-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card login-card">
+            <div class="card-body p-4 p-md-5">
+              <div class="login-header">
+                <img src="../../img/Barangay Logo.png" alt="Barangay Logo" class="img-fluid">
+                <h1>LOGIN MODULE</h1>
+              </div>
+
+              <?php if (isset($_SESSION['message']) || isset($_SESSION['errorMessage']) || isset($_SESSION['successMessage'])) : ?>
+              <div class="alert <?php 
+                                  if (isset($_SESSION['errorMessage'])) echo 'alert-danger';
+                                  elseif (isset($_SESSION['successMessage'])) echo 'alert-success';
+                              ?> alert-dismissible fade show" role="alert">
+                <?php 
+                  if (isset($_SESSION['errorMessage'])) {
+                    echo $_SESSION['errorMessage'];
+                    unset($_SESSION['errorMessage']);
+                  } elseif (isset($_SESSION['successMessage'])) {
+                    echo $_SESSION['successMessage'];
+                    unset($_SESSION['successMessage']);
+                  }
+                ?>
+              </div>
+              <?php endif; ?>
+
+              <form action="../../controller/loginController.php" method="POST">
+                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken); ?>">
+
+                <div class="mb-3 form-group">
+                  <input type="text" class="form-control" id="username" name="username"
+                      placeholder=" " required>
+                  <label for="username" class="form-label">Username or Phone number</label>
+                  <div class="error-message"></div>
+                </div>
+
+                <div class="mb-3 form-group">
+                  <div class="password-input-group">
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder=" " required>
+                    <label for="password" class="form-label">Password</label>
+                    <button type="button" class="password-toggle-btn" id="togglePassword">
+                      <i class="bi bi-eye-slash"></i>
+                    </button>
+                    <div class="error-message"></div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">LOG IN</button>
+
+                <div class="form-links">
+                  <p>Don't have an account yet? <a href="register.php">REGISTER</a></p>
+                  <p><a href="forgotPassword.php">FORGOT PASSWORD?</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Your exact footer implementation -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4 position-relative">
+        <!-- Location Section -->
+        <div class="col-md-6 col-lg-3">
+          <h3 class="footer-title">Our Location</h3>
+          <div class="footer-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7723.078039433515!2d120.999401!3d14.568334!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c99d33cee621%3A0xb5e2f10c0095d856!2s1194%20Florentino%20Torres%2C%20San%20Andres%20Bukid%2C%20Manila%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1743304696194!5m2!1sen!2sph"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Barangay Location"></iframe>
+          </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-geo-alt footer-icon"></i>
+            <span>1194 Florentino Torres, San Andres Bukid, Manila, Metro Manila</span>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="col-md-6 col-lg-3">
+          <h3 class="footer-title">Contact Us</h3>
+          <div class="footer-contact-item">
+            <i class="bi bi-envelope footer-icon"></i>
+            <a href="mailto:barangay752@example.com" class="footer-link">barangay752@example.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="bi bi-telephone footer-icon"></i>
+            <a href="tel:+63281234567" class="footer-link">+63 (2) 8123 4567</a>
+          </div>
+
+          <h3 class="footer-title mt-4">Office Hours</h3>
+          <div class="footer-hours-item">
+            <i class="bi bi-clock footer-icon"></i>
+            <span>Monday - Friday: 8:00 AM - 5:00 PM</span>
+          </div>
+          <div class="footer-hours-item">
+            <i class="bi bi-clock footer-icon"></i>
+            <span>Saturday: 8:00 AM - 12:00 PM</span>
+          </div>
+          <div class="footer-hours-item">
+            <i class="bi bi-clock footer-icon"></i>
+            <span>Sunday: Closed</span>
+          </div>
+        </div>
+
+        <!-- Quick Links and Social Media -->
+        <div class="col-md-6 col-lg-3">
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-quick-links">
+            <li><a href="../../index.php" class="footer-link">Home</a></li>
+            <li><a href="AboutUsBootstrap.php" class="footer-link">About Us</a></li>
+            <li><a href="serviceBootstrap.php" class="footer-link">Services</a></li>
+          </ul>
+
+          <h3 class="footer-title">Connect With Us</h3>
+          <div class="social-links">
+            <a href="https://facebook.com" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://twitter.com" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://instagram.com" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Logo Section -->
+        <div class="footer-logo-container">
+          <div class="footer-logos">
+            <img src="../../img/lunsgodNgMayNilaLogo.png" class="footer-logo-img" alt="Seal of Lungsod ng Maynila">
+            <img src="../../img/Barangay Logo.png" class="footer-logo-img" alt="Barangay Logo">
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="footer-divider"></div>
+
+      <!-- Copyright -->
+      <div class="footer-copyright">
+        <p>© <span id="copyrightYear"></span> BARANGAY 752 ZONE-81. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/loginBootstrap.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ... (keep existing navbar and mobile menu code) ...
+
+      // Enhanced Password Toggle
+      const togglePassword = document.querySelector('#togglePassword');
+      const password = document.querySelector('#password');
+      const icon = togglePassword.querySelector('i');
+
+      togglePassword.addEventListener('click', function (e) {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        icon.classList.toggle('bi-eye-slash');
+        icon.classList.toggle('bi-eye');
+      });
+
+      // Form Validation
+      const form = document.querySelector('form');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+
+      form.addEventListener('submit', function(e) {
+        let isValid = true;
+
+        // Username validation
+        if (usernameInput.value.trim() === '') {
+          usernameInput.classList.add('is-invalid');
+          usernameInput.nextElementSibling.textContent = 'Please enter your username or phone number';
+          isValid = false;
+        } else {
+          usernameInput.classList.remove('is-invalid');
+        }
+
+        // Password validation
+        if (passwordInput.value.trim() === '') {
+          passwordInput.classList.add('is-invalid');
+          passwordInput.nextElementSibling.textContent = 'Please enter your password';
+          isValid = false;
+        } else {
+          passwordInput.classList.remove('is-invalid');
+        }
+
+        if (!isValid) {
+          e.preventDefault();
+        }
+      });
+
+      // Real-time validation
+      usernameInput.addEventListener('input', function() {
+        if (this.value.trim() !== '') {
+          this.classList.remove('is-invalid');
+        }
+      });
+
+      passwordInput.addEventListener('input', function() {
+        if (this.value.trim() !== '') {
+          this.classList.remove('is-invalid');
+        }
+      });
+
+      // Update copyright year
+      document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1043 @@
+html,
+body {
+  overflow-x: hidden;
+  /* Prevents horizontal scrolling */
+  width: 100%;
+  /* Ensures no extra width is added */
+}
+
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  color: #151414;
+  /* Dark Gray for text */
+  background-color: #ffffff;
+  /* White background */
+}
+
+
+/* Force black text for light backgrounds */
+.bg-light h1,
+.bg-light h2,
+.bg-light h3,
+.bg-light h4,
+.bg-light h5,
+.bg-light h6,
+.bg-light p,
+.bg-light a {
+  color: #151414 !important;
+  /* Black text */
+}
+
+/*================================== NAVIGATION BAR ================================*/
+/* Navigation Bar */
+.navbar {
+  background-color: #1E3A8A;
+  /* Dark Blue */
+  padding: 1.5rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  /* Aligns brand and links properly */
+  align-items: center;
+}
+
+/* Navbar Container */
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navbar Brand (Logo/Title) */
+.navbar-brand {
+  font-family: "Poppins", sans-serif;
+  color: white !important;
+  font-size: 1.5rem;
+  pointer-events: none;
+  cursor: default;
+  margin-left: 2rem;
+}
+
+/* Navigation Links */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+.navbar .container {
+  max-width: 90%;
+  /* Adjust mo ito para ilapit/lumayo */
+  margin-left: auto;
+  /* Itulak sa kanan */
+  margin-right: 0;
+  /* Siguraduhin na wala itong space sa kanan */
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-family: "Poppins", sans-serif;
+  margin-left: 3rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar-nav .nav-link:hover {
+  color: #FED37B !important;
+  /* Yellow on hover */
+}
+
+/* Underline Animation */
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #FED37B;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+/* Navbar on Scroll */
+.navbar.scrolled .nav-link {
+  color: #151414 !important;
+  /* Dark gray text */
+}
+
+/* Navbar Light Background */
+.navbar.scrolled-light {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  /* Semi-transparent white */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled-light .nav-link {
+  color: #151414 !important;
+  /* Dark text */
+}
+
+.navbar.scrolled-light .ham .line {
+  stroke: #151414 !important;
+  /* Dark hamburger icon */
+}
+
+
+/* Hamburger Menu */
+.navbar-toggler {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  outline: none !important;
+  /* Remove focus outline */
+}
+
+/* Hamburger Icon */
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 400ms;
+  user-select: none;
+}
+
+.ham .line {
+  fill: none;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms, transform 400ms, stroke 0.3s ease;
+  stroke: white;
+  /* Default stroke */
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+
+/* Hamburger on Scroll */
+.navbar.scrolled .ham .line {
+  stroke: #151414;
+}
+
+/* Hamburger Animation */
+.ham8 .top {
+  stroke-dasharray: 40 160;
+}
+
+.ham8 .middle {
+  stroke-dasharray: 40 142;
+  transform-origin: 50%;
+  transition: transform 400ms;
+}
+
+.ham8 .bottom {
+  stroke-dasharray: 40 85;
+  transform-origin: 50%;
+  transition: transform 400ms, stroke-dashoffset 400ms;
+}
+
+.ham8.active .top {
+  stroke-dashoffset: -64px;
+}
+
+.ham8.active .middle {
+  transform: rotate(90deg);
+}
+
+.ham8.active .bottom {
+  stroke-dashoffset: -64px;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  /* Mobile Menu */
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1E3A8A;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 0.5rem 0;
+  }
+
+  /* Center Logo */
+  .navbar-brand {
+    margin-left: 0;
+  }
+
+  /* Adjust Hamburger */
+  .navbar-toggler {
+    margin-left: auto;
+  }
+}
+
+/*==================================SIDE PANNEL================================*/
+
+/* Side Panel (Mobile) */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  /* Hidden by default */
+  width: 300px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.1);
+  /* Glassmorphism effect */
+  backdrop-filter: blur(20px);
+  /* Increase blur for better effect */
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.4s ease;
+  z-index: 1001;
+}
+
+.side-panel-content {
+  padding: 4rem 2rem 2rem;
+  /* Adjusted padding: top, right/left, bottom */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* Reduced gap between links */
+}
+
+.side-panel-content .nav-link {
+  color: white;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.side-panel-content .nav-link:hover {
+  color: #FED37B;
+}
+
+/* Close Button (X) */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 15rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.close-icon {
+  fill: white;
+  /* Default color */
+  transition: fill 0.3s ease;
+}
+
+.close-btn:hover .close-icon {
+  fill: red;
+  /* Change to red on hover */
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: 1000;
+}
+
+/* Active States */
+.side-panel.active {
+  right: 0;
+  /* Slide in */
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    display: block;
+    /* Show hamburger menu */
+  }
+
+  .navbar-collapse {
+    display: none;
+    /* Hide desktop links on mobile */
+  }
+}
+
+/*==================================NAVIGATION BAR================================*/
+
+
+
+/*==================================TO TOP================================*/
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 15%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+  z-index: 1000; /* Ensure the button is on top */
+}
+
+.back-to-top:hover {
+  background-color: #0056b3;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+/*==================================INSIDE CONTENT================================*/
+
+/* Intro Section */
+.intro-section {
+  height: 100vh;
+  /* Full viewport height */
+  background: linear-gradient(to right,
+      rgba(30, 58, 138, 0.9) 5%,
+      rgba(30, 58, 138, 0.6) 40%,
+      rgba(30, 58, 138, 0.3) 70%,
+      rgba(30, 58, 138, 0) 90%),
+    url('../Barangay752ManagementSystem/img/HomeBackgroundBrgy.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subheading {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #4a4a4a; /* Kulay ng text */
+}
+
+.subheading .line {
+  width: 40px;  /* Haba ng linya */
+  height: 3px;  /* Kapal ng linya */
+  background-color: #1E3A8A; /* Kulay blue */
+  display: inline-block;
+  margin-left: 10px; /* Space sa text */
+}
+
+
+/* Logo Image Styling */
+.intro-section img {
+  max-width: 400px;
+  /* Default size for larger screens */
+  max-height: 400px;
+  /* Default size for larger screens */
+  width: auto;
+  /* Maintain aspect ratio */
+  height: auto;
+  /* Maintain aspect ratio */
+  object-fit: cover;
+  /* Ensure the image covers the space without distortion */
+  border-radius: 50%;
+  /* Optional: Make the image circular */
+}
+
+/* Logo Image Styling */
+.intro-section img {
+  width: 400px;
+  /* Default size for larger screens */
+  height: 400px;
+  /* Must match width for a perfect circle */
+  object-fit: cover;
+  /* Ensure the image covers the space without distortion */
+  border-radius: 50%;
+  /* Makes the image circular */
+}
+
+/* Adjust for 175% zoom */
+@media (max-width: 1100px) {
+  .intro-section img {
+    width: 350px;
+    /* Slightly smaller for 175% zoom */
+    height: 350px;
+    /* Must match width */
+  }
+}
+
+/* Adjust for high-resolution screens (e.g., Retina displays) */
+@media (min-resolution: 120dpi) {
+  .intro-section img {
+    width: 350px;
+    /* Slightly smaller for high-res screens */
+    height: 350px;
+    /* Must match width */
+  }
+}
+
+/* Responsive Adjustments for the Image */
+@media (max-width: 1600px) {
+  .intro-section img {
+    width: 350px;
+    /* Slightly smaller for large desktops */
+    height: 350px;
+    /* Must match width */
+  }
+}
+
+@media (max-width: 1400px) {
+  .intro-section img {
+    width: 320px;
+    /* Adjusted size for medium desktops */
+    height: 320px;
+    /* Must match width */
+  }
+}
+
+@media (max-width: 1200px) {
+  .intro-section img {
+    width: 300px;
+    /* Adjusted size for large tablets */
+    height: 300px;
+    /* Must match width */
+  }
+}
+
+@media (max-width: 992px) {
+  .intro-section img {
+    width: 250px;
+    /* Adjusted size for tablets */
+    height: 250px;
+    /* Must match width */
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section img {
+    width: 200px;
+    /* Adjusted size for small tablets */
+    height: 200px;
+    /* Must match width */
+  }
+}
+
+@media (max-width: 576px) {
+  .intro-section img {
+    width: 150px;
+    /* Adjusted size for mobile devices */
+    height: 150px;
+    /* Must match width */
+  }
+}
+
+@media (max-width: 400px) {
+  .intro-section img {
+    width: 120px;
+    /* Adjusted size for very small mobile devices */
+    height: 120px;
+    /* Must match width */
+  }
+}
+
+/* Minimal Transparent Button */
+/* Explore More Button (Minimal & Blended) */
+.btn-explore {
+  display: inline-block;
+  padding: 12px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  /* Ensures readability */
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  /* Soft border */
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Hover Effect */
+.btn-explore:hover {
+  background: rgba(255, 255, 255, 0.15);
+  /* Softer glow */
+  border-color: rgba(255, 255, 255, 0.5);
+  /* Lighter border */
+  transform: translateY(-1px);
+  /* Less lift effect */
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.15);
+  /* Softer shadow */
+}
+
+/* Button Text Animation */
+.btn-explore span {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-explore:hover span {
+  transform: translateX(5px);
+  /* Slight movement on hover */
+}
+
+
+/* Responsive Adjustments for the Button */
+@media (max-width: 1200px) {
+  .intro-section .btn-primary {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    /* Slightly smaller font size */
+    padding: 0.6em 1.2em;
+    /* Slightly smaller padding */
+  }
+}
+
+@media (max-width: 992px) {
+  .intro-section .btn-primary {
+    font-size: clamp(0.85rem, 1.6vw, 1rem);
+    /* Smaller font size */
+    padding: 0.5em 1em;
+    /* Smaller padding */
+  }
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .btn-custom {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .intro-section .btn-primary {
+    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    /* Smallest font size */
+    padding: 0.3em 0.6em;
+    /* Smallest padding */
+  }
+}
+
+/*================================== ABOUT US SECTION ==================================*/
+
+.about-section {
+  background-color: #f8f9fa; /* Light Gray Background */
+  padding: 80px 5%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Fade-in Effect */
+.about-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title Styling */
+.about-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1E3A8A; /* Dark Blue */
+  margin-bottom: 20px;
+}
+
+/* Text Styling */
+.about-section p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* 📱 Responsive Adjustments */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 60px 10%;
+  }
+
+  .about-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-section p {
+    font-size: 1rem;
+  }
+}
+
+
+/*================================== HERO SECTION ==================================*/
+#about {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+.about-description {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-description p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.image-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 550px;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: scale(1.05);
+}
+
+.carousel-image.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.carousel-control {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-control.active {
+  width: 1.5rem;
+  background-color: white;
+}
+
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  opacity: 0.7;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 4rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  padding: 0 1.5rem;
+  transition: transform 0.5s ease;
+}
+
+.image-carousel:hover .carousel-caption {
+  transform: translateY(-20px);
+}
+
+.mission-vision-card {
+  background-color: #f9fafb;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.mission-vision-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mission-icon {
+  color: #2563eb;
+  margin-right: 0.75rem;
+}
+
+.vision-icon {
+  color: #16a34a;
+  margin-right: 0.75rem;
+}
+
+.cta-button {
+  padding: 0.75rem 2rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.cta-button:active {
+  transform: scale(0.95);
+}
+
+/* Animation classes */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: fadeInLeft 0.6s forwards 0.2s;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeInRight 0.6s forwards 0.4s;
+}
+
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Text layout styles to match the image */
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: #007BFF;
+  margin-bottom: 1.5rem;
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
+.description-text {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.75;
+  margin-left: -2rem;
+  margin-bottom: 1.5rem;
+  width: 110%;
+ 
+}
+
+.description-text:last-child {
+  margin-bottom: 0;
+}
+
+
+
+
+
+/*==================================ANNOUNCEMENT================================*/
+/* Fullscreen Announcement Section */
+.announcement-section {
+  width: 100vw;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  /* Glossy glass effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10vh 20px 80px;
+  transition: background-color 0.3s ease;
+}
+
+/* Headings & Text */
+.announcement-section h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.announcement-section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin: 8px auto 0;
+  border-radius: 10px;
+}
+
+/* Minimalist Glassmorphism Announcement Box */
+.announcement-box {
+  background: rgba(255, 255, 255, 0.2);
+  /* Glass effect */
+  border-radius: 12px;
+  padding: 25px;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 350px;
+  min-height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Soft shadow for contrast */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect: Remove Blur Completely */
+.announcement-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: none !important;
+  /* Completely remove blur */
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.9);
+  /* Solid glossy effect */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Subtle Glossy Highlight */
+.announcement-box::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
+  z-index: 0;
+}
+
+/* Minimalist + Glassmorphism Icon */
+.announcement-box i {
+  font-size: 24px;
+  width: 55px;
+  height: 55px;
+  color: #007bff;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Icon Micro-Interaction */
+.announcement-box:hover i {
+  transform: rotate(360deg);
+  backdrop-filter: none !important;
+  /* Completely remove blur */
+}
+
+/* Announcement Titles */
+.announcement-box h4 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+.btn-outline-dark {
+  padding: 0.75rem 2rem;
+  background-color: #007BFF;
+  color: white !important; /* Ensures text is always white */
+  border: none;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+/* Fix for <a> inside the button */
+.btn-outline-dark a {
+  text-decoration: none;
+  color: white !important; /* Ensures the link text is white */
+  display: block;
+}
+
+/* Hover Effect */
+.btn-outline-dark:hover {
+  background: #0056b3;
+  color: white !important; /* Ensures text stays white on hover */
+}
+
+.btn-outline-dark:hover a {
+  color: white !important;
+}
+
+
+/* Subtle Fade-in Animation */
+.announcement-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.announcement-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .announcement-box {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .btn-custom {
+    width: 100%;
+  }
+}
+
+

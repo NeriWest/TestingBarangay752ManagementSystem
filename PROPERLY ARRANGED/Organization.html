@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Council | Official Organization Chart</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --secondary-purple: #6610f2;
+            --accent-orange: #fd7e14;
+            --dark-gray: #212529;
+            --light-gray: #f8f9fa;
+        }
+        
+        /* ===== MODERN ORGANIZATION SECTION ===== */
+        .org-section {
+            padding: 5rem 0;
+            background-color: #f8f9fa;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            position: relative;
+        }
+
+        /* New Section Header Style */
+        .section-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-intro h2 span {
+            background: linear-gradient(90deg, #0d6efd 0%, #6610f2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-intro .badge {
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.05em;
+            border-radius: 999px;
+            background-color: #f1f3f5;
+            color: #495057;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.5rem 1.25rem;
+            text-transform: uppercase;
+        }
+
+        .section-intro h2 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .section-intro p {
+            font-size: 1.125rem;
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Council Grid Layout */
+        .council-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Council Member Card */
+        .council-card {
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            border: none;
+        }
+
+        /* Image Section */
+        .card-image {
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e5e7eb;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-initials {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(135deg, rgba(13, 110, 253, 0.7), rgba(102, 16, 242, 0.7));
+        }
+
+        /* Info Section */
+        .card-info {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-name {
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 0.25rem;
+            font-size: 1.3rem;
+            line-height: 1.3;
+        }
+
+        .card-position {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .card-position::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-purple));
+            border-radius: 3px;
+        }
+
+        .card-description {
+            color: #495057;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Role Badges */
+        .role-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(90deg, var(--accent-orange), #ff922b);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        /* Special Styling for Captain */
+        .captain-card {
+            grid-column: 1 / -1;
+        }
+
+        .captain-card .card-image {
+            height: 320px;
+        }
+
+        .captain-card .card-name {
+            font-size: 1.8rem;
+        }
+
+        .captain-card .card-position {
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .council-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .card-image {
+                height: 220px;
+            }
+            
+            .captain-card .card-image {
+                height: 280px;
+            }
+            
+            .section-intro h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-intro h2 {
+                font-size: 2.25rem;
+            }
+            
+            .section-intro p {
+                font-size: 1.05rem;
+            }
+            
+            .card-image {
+                height: 200px;
+            }
+            
+            .captain-card .card-image {
+                height: 240px;
+            }
+            
+            .card-name {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .org-section {
+                padding: 3rem 0;
+            }
+            
+            .council-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .section-intro p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Modern Organization Section -->
+     <section class="org-section">
+        <div class="container">
+            <div class="section-intro animate__animated animate__fadeIn">
+                <span class="badge">BARANGAY OFFICIALS</span>
+                <h2 class="display-5 fw-bold mt-3 mb-3">COUNCIL <span>LEADERSHIP TEAM</span></h2>
+                <p class="lead text-muted mx-auto">
+                    Meet the dedicated public servants working for the progress and welfare of our community
+                </p>
+            </div>
+
+            <div class="council-grid" id="councilGrid">
+                <!-- Members will be added dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const councilMembers = [
+                {
+                    initials: "ATQ",
+                    name: "ANTONIO T. QUIRANTE",
+                    position: "BARANGAY CAPTAIN",
+                    description: "Leading our barangay with dedication and vision since 2019. Focused on community development and resident welfare.",
+                    isCaptain: true,
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "E'TGJ",
+                    name: "ERNESTO 'EJ' T. GABRIEL JR.",
+                    position: "BARANGAY SECRETARY",
+                    description: "Manages administrative tasks and ensures efficient record-keeping for all barangay matters and concerns.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "MFM",
+                    name: "MARIEL F. MONTENEGRO",
+                    position: "BARANGAY TREASURER",
+                    description: "Oversees the financial resources and ensures transparent management of barangay funds.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "ATC",
+                    name: "ANDRES T. CAPARANGAN",
+                    position: "SK KAGAWAD",
+                    description: "Responsible for maintaining peace and security within the barangay through various programs and initiatives.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "AIM",
+                    name: "ANDRES I. MALLILLIN",
+                    position: "SK KAGAWAD",
+                    description: "Leads health programs and ensures proper sanitation practices throughout the barangay.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "RAR",
+                    name: "ROBERTA A. RIVERA",
+                    position: "SK KAGAWAD",
+                    description: "Spearheads educational initiatives and scholarship programs for barangay residents.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "ALSM",
+                    name: "ANA LIZA S. MONTEMAYOR",
+                    position: "SK KAGAWAD",
+                    description: "Oversees infrastructure projects and maintenance of public facilities within the barangay.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "CSG",
+                    name: "CECILIA S. GUINTO",
+                    position: "SK KAGAWAD",
+                    description: "Represents the youth sector and implements programs catering to the needs of young residents.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "BSF",
+                    name: "BENJAMIN S. FRANCISCO",
+                    position: "SK KAGAWAD",
+                    description: "Assists the SK Chairperson in managing youth programs and activities.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "RBDL",
+                    name: "REDENTOR B. DE LEON",
+                    position: "SK KAGAWAD",
+                    description: "Responsible for the financial management of SK projects and initiatives.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "CMAO",
+                    name: "CHARLENE MAE A. OBEJERO",
+                    position: "SK CHAIRPERSON",
+                    description: "Leads the Sangguniang Kabataan in implementing youth development programs and activities.",
+                    imageUrl: "../img/Barangay Logo.png"
+                },
+                {
+                    initials: "PCD",
+                    name: "PAULINE C. DAGOHOY",
+                    position: "DAYCARE TEACHER",
+                    description: "Provides early childhood education and care for the youngest members of our community.",
+                    imageUrl: "../img/Barangay Logo.png"
+                }
+            ];
+
+            const councilGrid = document.getElementById('councilGrid');
+
+            // Initialize grid with animation
+            function initGrid() {
+                councilGrid.innerHTML = '';
+                
+                councilMembers.forEach((member, index) => {
+                    const memberElement = document.createElement('div');
+                    memberElement.className = `council-card ${member.isCaptain ? 'captain-card' : ''} animate__animated animate__fadeInUp`;
+                    memberElement.style.animationDelay = `${index * 0.1}s`;
+                    
+                    // Check if image URL is provided
+                    const imageContent = member.imageUrl 
+                        ? `<img src="${member.imageUrl}" alt="${member.name}" class="img-fluid">`
+                        : `<div class="card-initials">${member.initials}</div>
+                           <img src="https://source.unsplash.com/random/600x600/?portrait,official,${index}" alt="Portrait" class="img-fluid">`;
+                    
+                    memberElement.innerHTML = `
+                        ${member.isCaptain ? '<span class="role-badge">Head Official</span>' : ''}
+                        <div class="card-image">
+                            ${imageContent}
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-name">${member.name}</h3>
+                            <p class="card-position">${member.position}</p>
+                            <p class="card-description">${member.description}</p>
+                        </div>
+                    `;
+                    councilGrid.appendChild(memberElement);
+                });
+            }
+
+            // Initialize
+            initGrid();
+            
+            // Add scroll animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.council-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Landing Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg topNav">
+  <div class="container-fluid"> <!-- Dati: container, pinalitan ko ng container-fluid -->
+    <!-- Toggle Button for Mobile -->
+    <button class="navbar-toggler ms-auto" type="button" aria-label="Toggle navigation">
+      <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80">
+        <path class="line top"
+          d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+        <path class="line middle" d="m 30,50 h 40" />
+        <path class="line bottom"
+          d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+      </svg>
+    </button>
+    <!-- Navigation Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav custom-nav-links">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link loginAnchor" href="#login">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Mobile Side Panel -->
+  <div class="side-panel">
+    <!-- Close Button (X) -->
+    <button class="close-btn" aria-label="Close panel">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <path class="close-icon"
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+      </svg>
+    </button>
+    <!-- Side Panel Content -->
+    <div class="side-panel-content">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About Us</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#login" class="nav-link">Login</a>
+    </div>
+  </div>
+
+  <!-- Overlay for Mobile -->
+  <div class="overlay"></div>
+
+
+  <!-- Intro Section -->
+  <section id="home" class="intro-section d-flex align-items-center" data-bg="light">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Logo Column -->
+        <div class="col-md-4 text-center">
+          <img src="img/Barangay Logo.png" alt="Logo" class="img-fluid mb-4">
+        </div>
+        <!-- Text Column -->
+        <div class="col-md-8">
+          <h2 class="text-white fw-bold mb-3">WELCOME TO</h2>
+          <h1 class="text-white fw-bold display-4 mb-4">BARANGAY 752 ZONE-81</h1>
+          <p class="text-white lead mb-5">
+            1194 Florentino Torres, San Andres Bukid, Manila, Metro Manila <br>
+            Open Hours of Barangay: Monday to Friday (8AM - 6PM) <br>
+          </p>
+          <a href="#" class="btn-explore">Learn More <span>&#8594;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about">
+    <div class="container px-4">
+        <div class="text-center mb-16 fade-in-up">
+            <h2 class="section-title">About Our Barangay</h2>
+            <p class="section-subtitle">Serving Our Community Since 2013</p>
+            <div class="about-description">
+                <p class="description-text">
+              Barangay 752 Zone-81 is a vibrant community located in the heart of Manila. We take pride in our diverse population and our commitment to improving the quality of life for all residents.
+                </p>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="row g-4 g-lg-5 align-items-center">
+            <!-- Image Carousel -->
+            <div class="col-lg-6 fade-in-left">
+                <div class="image-carousel" id="imageCarousel">
+                    <!-- Images will be inserted here by JavaScript -->
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-caption">
+                        <h3 class="text-2xl fw-bold mb-2">Our Community</h3>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission & Vision Content -->
+            <div class="col-lg-6 fade-in-right">
+                <div class="d-flex flex-column gap-4">
+                    <!-- Mission Statement -->
+                    <div class="mission-vision-card">
+                        <h3 class="text-2xl fw-bold text-gray-800 mb-4 d-flex align-items-center">
+                            <span class="mission-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </span>
+                            Our Mission
+                        </h3>
+                        <p class="text-gray-600 lh-base">
+                            To provide efficient and effective public service that promotes the welfare and development of our community through transparent governance and active citizen participation.
+                        </p>
+                    </div>
+
+                    <!-- Vision Statement -->
+                    <div class="mission-vision-card">
+                        <h3 class="text-2xl fw-bold text-gray-800 mb-4 d-flex align-items-center">
+                            <span class="vision-icon">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                            Our Vision
+                        </h3>
+                        <p class="text-gray-600 lh-base">
+                            A progressive, peaceful, and sustainable community where residents enjoy a high quality of life, economic opportunities, and a clean environment.
+                        </p>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="mt-4 text-center">
+                        <button class="cta-button d-flex align-items-center mx-auto">
+                            <span>Learn More About Us</span>
+                            <i class="fas fa-chevron-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+  <!-- Announcements Section -->
+  <section id="announcements" class="announcement-section py-5  bg-light" >
+    <div class="container">
+      <p class="text-uppercase text-muted text-center">Updates</p>
+      <h2 class="text-center">Stay Informed with Real-Time <br> Announcements</h2>
+      <p class="text-center">Get the latest news and updates from our barangay. Stay connected with important <br>
+        announcements regarding community events and services.</p>
+
+      <div class="row mt-5 text-center">
+        <div class="col-md-4">
+          <div class="announcement-box">
+            <i class="fa-solid fa-bullhorn"></i> <!-- Updated Icon -->
+            <h4 class="mt-3">Important Community <br> Notices and Events</h4>
+            <p>Check here for urgent updates and events.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="announcement-box">
+            <i class="fa-solid fa-filter"></i> <!-- Updated Icon -->
+            <h4 class="mt-3">Filter Announcements for <br> Your Needs</h4>
+            <p>Easily search for specific announcements.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="announcement-box">
+            <i class="fa-solid fa-sync-alt"></i> <!-- Updated Icon -->
+            <h4 class="mt-3">Stay Updated with Our <br> Auto-Scrolling Feature</h4>
+            <p>Never miss an important update again.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-outline-dark"><a href="AnnouncementBootstrap.html">View All</a></button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Services Section -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Our Services</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Service 1</h3>
+          <p>Description of Service 1.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Service 2</h3>
+          <p>Description of Service 2.</p>
+        </div>
+        <div class="col-md-4">
+          <h3>Service 3</h3>
+          <p>Description of Service 3.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Location</h5>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d144.95373531531615!3d-37.816279742021665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d2a6c6f4f4b5!2sFlinders%20St%2C%20Melbourne%20VIC%203000%2C%20Australia!5e0!3m2!1sen!2sus!4v1625070000000!5m2!1sen!2sus"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <p>Email: info@mybrand.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+        <div class="col-md-4">
+          <h5>More</h5>
+          <ul class="list-unstyled">
+            <li><a href="#about" class="text-white">About Us</a></li>
+            <li><a href="#services" class="text-white">Services</a></li>
+            <li><a href="#login" class="text-white">Login</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <p>&copy; 2023 MyBrand. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+
+  <!-- Custom JS -->
+  <script src="scripts.js"></script>
+</body>
+
+</html>

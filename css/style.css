@@ -1,0 +1,160 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Metrophobic;
+}
+
+p, h4{
+    font-family: Metrophobic;
+
+}
+.headerLogo img {
+    width: 60px;
+    height: 60px;
+}
+
+.headerLogo {
+    position: absolute;
+    top: 10px;
+    left: 70px;
+}
+
+.barangayNumber {
+    color: white;
+    position: absolute;
+    top: 15px;
+    left: 10rem;
+    font-family: Metrophobic;
+}
+
+.topNav {
+    background-color: #003366;
+    padding: 2.5rem;
+
+}
+
+.topNav a {
+    color: white;
+    text-decoration: none;
+    font-family: metrophobic;
+    margin-left: 5rem;
+}
+
+.loginAnchor a{
+    color: black;
+}
+
+.topNavAnchors {
+    position: absolute;
+    top: 28px;
+    right: 70px;
+}
+
+.footer{
+    background-color: #333333;
+    color: white;
+    padding: 25px;
+    padding-bottom: 19rem;
+    border-top: solid #d9dbdd 2px;
+}
+
+hr{
+    border-color: #FFFFFF;
+    margin-bottom: 1rem;
+    margin-right: 25px;
+    text-align: center;
+}
+
+.footerLogo{
+    float:right;
+    margin-top: 80px;
+    margin-right: 80px;
+    text-align: center;
+}
+.footerLogo img{
+    height: 130px;
+    width: 130px;
+    padding-left: 50;
+}
+
+.first{
+    float:left;
+    text-align: justify;
+
+}
+
+.servicesHeader{
+    background-color: #003366;
+    text-align: center;
+    color:white;
+    padding: 10px;
+
+}
+
+.contentContainer{
+    margin-left: 10rem;
+    margin-right: 10rem;
+    text-align: justify;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
+}
+
+.contentContainerDesc{
+    font-size: 21px;
+
+}
+
+.servicesContentContainer{
+    display: block;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.servicesContainers{
+    position: relative;
+    display: inline-block;
+}
+
+.imgContainer{
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.imgContainer img{
+    height: 217px;
+    width: 280px;
+    display: block;
+    filter: grayscale(100%);
+    transition: all 0.3 ease;
+    border-radius: 1rem;
+    transform-origin: center ;
+    opacity: 50%;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.imgContainer img:hover{
+    filter: grayscale(0%);
+    transform: scale(1.05);
+    opacity: 1;
+    cursor: pointer;
+    border-radius: 2.05rem;
+}
+
+
+.imgContainer p{
+    position: absolute;
+    font-weight: bolder;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 21px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+.imgContainer:hover p{
+    font-size: 22px;
+}

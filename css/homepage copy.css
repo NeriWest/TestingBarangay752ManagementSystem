@@ -1,0 +1,836 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+}
+
+p,
+h4 {
+    font-family: "Poppins", sans-serif;
+
+}
+
+.headerLogo img {
+    width: 60px;
+    height: 60px;
+}
+
+.headerLogo {
+    position: absolute;
+    top: 10px;
+    left: 70px;
+}
+
+.barangayNumber {
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 10rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.topNav {
+    background-color: #1E3A8A;
+    padding: 2.5rem;
+}
+
+.topNav a {
+    color: white;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    margin-left: 5rem;
+    position: relative; /* Required for pseudo-element */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.topNav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Position the underline */
+    width: 0; /* Start with no width */
+    height: 2px; /* Thickness of the underline */
+    background-color: #FED37B; /* Color of the underline */
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+.topNav a:hover {
+    color: #FED37B; 
+}
+
+.topNav a:hover::after,
+.topNav a.active::after { /* Add active class styles */
+    width: 100%; 
+}
+
+/* Ensure the login link follows the same hover and active styles */
+.loginAnchor a {
+    color: white; /* Change this to white to match other links */
+}
+
+.topNavAnchors {
+    position: absolute;
+    top: 28px;
+    right: 70px;
+}
+/* Footer Styles */
+.footer {
+    background-color: #151414;
+    color: white;
+    padding: 25px;
+    border-top: solid #d9dbdd 2px;
+    overflow: hidden; /* Clear floats */
+}
+
+.footerHR {
+    border: none; /* Removes default border */
+    border-top: 1px solid #FFFFFF;
+    width: 95%; /* Adjust width if necessary */
+    margin: 0 auto 1rem auto; /* Center align with spacing */
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+    margin-bottom: 20px; /* Space between content and footerBottom */
+}
+
+.first, .contact, .more, .footerLogo {
+    flex: 1; /* Distribute space evenly */
+    margin: 10px;
+    min-width: 0; /* Allow flex items to shrink */
+}
+
+.first iframe {
+    width: 100%;
+    max-width: 350px;
+    height: 200px;
+    margin-bottom: 10px;
+    margin-left: 35px;
+}
+
+.first h4 {
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.contact, .more {
+    text-align: left;
+    margin-left: 5rem;
+    margin-top: 1rem;
+}
+
+.contact h3, .more h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+
+}
+
+.contact p, .more ul {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+.more ul {
+    list-style: none;
+}
+
+.more ul li {
+    margin-bottom: 5px;
+}
+
+.more ul li a {
+    text-decoration: none; 
+    color: white;
+    transition: color 0.2s ease;
+}
+
+.more ul li a:hover {
+    color: #1877F2;
+}
+
+/* Logos & Copyright */
+.footerLogo {
+    display: flex;
+    flex-direction: column; /* Stack logos and paragraph vertically */
+    align-items: flex-end; /* Align to the right */
+    margin-top: 2.5rem; /* Move the logos and paragraph down */
+    margin-right: 5rem;
+}
+
+.logos {
+    display: flex;
+    gap: 20px; /* Space between logos */
+    align-items: center;
+}
+
+.footerLogo img {
+    height: 130px;
+    width: 130px;
+}
+
+.footerParagraph {
+    margin-top: 1rem; /* Use relative units for spacing */
+    text-align: right; /* Align text to the right */
+    margin-right: 2%; /* Reduced from 5% to 2% to move left */
+    font-size: 1rem; /* Use relative units for font size */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footerContent {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    .first, .contact, .more, .footerLogo {
+        flex: 1 1 100%; /* Full width on smaller screens */
+        margin: 10px 0; /* Adjust margins */
+    }
+
+    .footerLogo {
+        align-items: center; /* Center logos and paragraph on smaller screens */
+    }
+
+    .footerParagraph {
+        text-align: center; /* Center-align text on smaller screens */
+        white-space: normal; /* Allow text to wrap */
+        font-size: 0.9rem; /* Slightly reduce font size on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .footerParagraph {
+        font-size: 0.8rem; /* Further reduce font size on very small screens */
+    }
+}
+
+
+.phone-icon {
+    font-size: 1.2em; 
+    margin-right: 5px; 
+    color: #007BFF;
+}
+
+.facebook-icon {
+    font-size: 1.2em; 
+    margin-right: 5px;
+    color: #1877F2;
+}
+
+.facebook-link {
+    text-decoration: none; 
+    color: white;
+    transition: color 0.2s ease;
+}
+
+.facebook-link:hover {
+    color: #1877F2;
+}
+
+/* Inside Contents */
+.insideContent {
+    position: relative;
+    height: 100rem;
+    max-width: 100%;
+    overflow: hidden;
+    /* Prevents unwanted stretching */
+    width: 100%;
+    height: 60rem;
+}
+
+.insideInformation {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right,  
+        rgba(30, 58, 138, 0.9) 5%,  /* Strong color starts from 20% */
+        rgba(30, 58, 138, 0.6) 40%,  /* Mid-fade */
+        rgba(30, 58, 138, 0.3) 70%,  /* Lighter towards the right */
+        rgba(30, 58, 138, 0) 90%     /* Fully transparent at the edge */
+    ),
+    url('../img/HomeBackgroundBrgy.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Keeps text visible */
+}
+
+
+
+/* Container to keep Logo, h2, h1, and p together */
+.logoTextContainer {
+    display: flex;
+    align-items: center;
+    /* Ensures logo and text align properly */
+    position: absolute;
+    top: 20%;
+    /* Keeps position */
+    left: 12rem;
+    /* Keeps position */
+}
+
+/* Logo */
+.logoTextContainer img {
+    width: clamp(150px, 20vw, 300px);
+    /* Makes logo responsive */
+    height: auto;
+    max-width: 100%;
+    z-index: 1;
+}
+
+/* Text Container */
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Aligns text to the left */
+    margin-left: 1rem;
+    /* Spacing between logo and text */
+}
+
+/* Responsive h2 */
+.textContainer h2 {
+    color: white;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    /* Responsive */
+    text-align: left;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Responsive h1 */
+.textContainer h1 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    /* Responsive */
+    margin-top: -3%;
+    text-align: left;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Responsive p */
+.textContainer p {
+    color: white;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    /* Responsive */
+    text-align: left;
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-top: -2rem;
+    /* Space below h1 */
+    z-index: 2;
+}
+
+
+.insideInformation button {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    background-color: rgba(30, 58, 138, 0.9);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.insideInformation button:hover {
+    background-color: #2471C9;
+    color: black;
+}
+
+.insideInformation a {
+    text-decoration: none;
+    color: white;
+}
+
+.separator {
+    background: linear-gradient(to right, rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.5)),
+}
+
+
+/* CARD */
+
+/* Announcement Section */
+/* Side Panel - Appears on the Right */
+#announcementPanel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Initially hidden on the right */
+    width: 350px;
+    /* Adjust width as needed */
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1001;
+}
+
+/* When the panel is active, slide it in */
+#announcementPanel.active {
+    right: 0;
+}
+
+/* Overlay Effect */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+/* Show overlay when active */
+#overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Floating Button */
+.announcement-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(30, 58, 138, 0.9);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Size */
+.announcement-btn i {
+    font-size: 16px;
+}
+
+/* Hover Effect */
+.announcement-btn:hover {
+    background: #2471C9;
+}
+
+/* Responsive - Ensure button remains the same size */
+@media (max-width: 768px) {
+    .announcement-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .announcement-btn i {
+        font-size: 14px;
+    }
+}
+
+
+/* Close Button */
+#closePanel {
+    display: block;
+    margin-bottom: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+/* Scrollable Announcement Section */
+/* Announcement Panel */
+.announcement-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    height: 100vh;
+    background: white;
+    color: black;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: right 0.4s ease-in-out;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Show the announcement panel */
+.announcement-panel.active {
+    right: 0;
+}
+
+/* Header */
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(30, 58, 138, 0.8);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.announcement-header h2 {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.announcement-header i {
+    color: rgba(30, 58, 138, 0.8);
+    /* Bullhorn color */
+}
+
+/* Close Button */
+.close-btn {
+    font-size: 24px;
+    background: none;
+    color: rgba(30, 58, 138, 0.8);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff4d4d;
+}
+
+/* Announcement Cards */
+.announcement-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.announcement-card {
+    background: rgba(30, 58, 138, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    color: black;
+    border-left: 5px solid rgba(30, 58, 138, 0.8);
+}
+
+.announcement-card:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 58, 138, 0.15);
+}
+
+.announcement-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.announcement-card p {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.announcement-date {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Scrollable Panel */
+.announcement-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Scrollbar Style */
+.announcement-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.announcement-content::-webkit-scrollbar-thumb {
+    background: rgba(30, 58, 138, 0.5);
+    border-radius: 10px;
+}
+
+.announcement-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(30, 58, 138, 0.8);
+}
+
+/* Back to Top Button Styling */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 15%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+    z-index: 1000; /* Ensure the button is on top */
+}
+
+.back-to-top:hover {
+    background-color: #0056b3;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    /*========== Colors ==========*/
+    --first-color: hsl(82, 60%, 28%);
+    --title-color: hsl(0, 0%, 15%);
+    --text-color: hsl(0, 0%, 35%);
+    --body-color: hsl(0, 0%, 95%);
+    --container-color: hsl(0, 0%, 100%);
+  
+    /*========== Font and typography ==========*/
+    --body-font: "Poppins", sans-serif;
+    --h2-font-size: 1.25rem;
+    --small-font-size: 0.813rem;
+  }
+  
+  /*========== Responsive typography ==========*/
+  @media screen and (min-width: 1120px) {
+    :root {
+      --h2-font-size: 1.5rem;
+      --small-font-size: 0.875rem;
+    }
+  }
+  
+  /*=============== BASE ===============*/
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+/* Content Container */
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px; /* Increased margin to compensate for removed underline */
+    padding-bottom: 5px;
+    /* Removed the ::after element that created the underline */
+}
+
+.contentContainerDesc {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-bottom: 50px;
+    color: #495057;
+    line-height: 1.8;
+}
+
+/* Services Grid */
+.servicesContentContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Service Item */
+.serviceItem {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: #fff;
+    height: 100%;
+}
+
+.serviceItem:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.imgContainer {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    height: 180px; /* Fixed height for consistency */
+}
+
+.serviceItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* No transform on hover - keeping image static */
+}
+
+/* Service Item Text */
+.imgContainer figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.9), transparent);
+    color: #fff;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0;  /* Initially hidden */
+    transform: translateY(20px); /* Slightly pushed down */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.serviceItem:hover .imgContainer figcaption {
+    opacity: 1; /* Fades in smoothly */
+    transform: translateY(0); /* Moves to original position */
+}
+
+
+/* Service Info */
+.serviceInfo {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px; /* Fixed height for consistency */
+}
+
+.serviceInfo h3 {
+    font-size: 1.2rem;
+    color: #0b3861;
+    margin-bottom: 10px;
+    height: 30px; /* Fixed height for consistency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.serviceInfo p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+    height: 65px; /* Fixed height for consistency */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.serviceBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px; /* Fixed height for consistency */
+}
+
+.serviceBtn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(30, 58, 138, 0.9);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.serviceBtn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+}
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+    .servicesContentContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .servicesContentContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .contentContainerDesc {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .servicesContentContainer {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+

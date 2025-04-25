@@ -1,0 +1,536 @@
+.permission { display: none; }
+
+#settings-content {
+    position: absolute;
+    z-index: 1;
+    height: 100vh;
+    width: 100%;
+    padding: 95px 18px;
+    display: flex;
+    flex-direction: column;
+    background-color: #0000000c;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-collapse: collapse;
+}
+
+.settings-div {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F7FC;
+    color: #000;
+    width: 25%;
+    text-align: left;
+}
+
+.settings-nav h3 {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.settings-nav button {
+    padding: 15px;
+    color: #000;
+    background-color: #F8F7FC;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.settings-nav button:hover {
+    background-color: rgb(211, 211, 211);
+    cursor: pointer;
+}
+
+.settings-main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section {
+    display: none;
+    height: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+    height: 88vh;
+}
+
+.section:first-child {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.section.active {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    
+}
+
+.template-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0 auto;
+}
+    
+.template-item {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 285px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+    margin: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.template-item p {
+    margin-bottom: 5px;
+    font-weight: bolder;
+    margin: 0 auto;
+}
+
+
+/* General styling for template item */
+
+.template-item img.template-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.template-item p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.document-container {
+    margin-bottom: 5px;
+}
+
+.document-container p.document-name {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.document-container a {
+    display: flex;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 5px 20px;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.document-container a:hover {
+    background-color: #0b7dda;
+}
+
+.uploadDocumentForm input[type="file"] {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.uploadDocumentForm button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 5px auto;
+    text-align: center;
+}
+
+/* Optional: To ensure the form itself is centered */
+.uploadDocumentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form contents */
+}
+
+.uploadDocumentForm button:hover {
+    background-color: #0b7dda;
+}
+
+/* Price form section */
+.price-container {
+    display: flex;
+    align-items: center;      /* Vertically center the checkbox and label */
+    justify-content: center;  /* Horizontally center the checkbox and label */
+    margin: 10px 0;           /* Optional: Add some vertical spacing */
+}
+
+.price-container input[type="checkbox"] {
+    margin-right: 15px;  /* Optional: Adds space between the checkbox and label */
+}
+
+.price-container label {
+    font-size: 16px;     /* Optional: Adjust label text size */
+    margin-bottom: 0;    /* Optional: Remove extra space below the label */
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.price-container input[type="checkbox"] {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 20px;
+    transition: 0.7s;
+}
+
+.price-container input:checked[type="checkbox"] {
+  background: #03a9f4;
+}
+
+.price-container input[type="checkbox"]:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: .5s;
+}
+
+.price-container input:checked[type="checkbox"]:before {
+  left: 20px;
+}
+
+.input-price {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.input-price input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.input-price button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-price button:hover {
+    background-color: #228c3b;
+}
+
+/* Buttons at the bottom */
+.delete-template-btn,
+.edit-template-btn {
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.delete-template-btn {
+    background-color: #e50202;
+}
+
+.delete-template-btn:hover, .btn-container .delete-payment-btn {
+    background-color: #a10404;
+
+}
+
+.edit-template-btn {
+    background-color: #28a745;
+}
+
+.edit-template-btn:hover, .btn-container .remove-qr-btn {
+    background-color: #1f7c34;
+}
+
+/* Flexbox to layout multiple items in the container */
+.template-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.uploadTemplateForm input[type="file"] {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+.uploadTemplateForm input[type="file"] {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.uploadTemplateForm input {
+    margin-bottom: 5px;
+}
+
+.uploadTemplateForm button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.uploadTemplateForm button:hover, .btn-container .update-btn {
+    background-color: #0056b3;
+}
+
+.no-templates {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.no-templates {
+    text-align: center;      /* Centers the text inside the no-templates div */
+    font-size: 18px;         /* Optional: Adjust text size */
+    color: #555;             /* Optional: Adjust text color */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 10%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.template-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.permission {
+    display: none;
+    height: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+    height: 88vh;
+}
+
+.permission.active {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    
+}
+
+.payment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #fdfdfd;
+    flex-direction: column;
+    width: 285px;
+    margin: 5px;
+}
+
+.payment h3 {
+    margin: 0 0 10px;
+}
+
+.payment img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Form Styling */
+.payment form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.payment label {
+    font-weight: bold;
+}
+
+.payment input[type="text"],
+.payment input[type="file"] {
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment button {
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.payment button:hover {
+    background: #0056b3;
+}
+
+/* Add Template Button Style */
+.add-template-btn, #add-payment-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.add-template-btn:hover, #add-payment-btn:hover {
+    background-color: #1f7c34;
+
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0); 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+}
+
+/* Close Button */
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-container .update-btn {
+    background-color: #007bff;
+}
+
+.btn-container .remove-qr-btn {
+    background-color: #28a745;
+}
+
+.btn-container .delete-payment-btn {
+    background-color: #e50202;
+}
+
+.input-price, .price-container {
+    display: block !important;
+}
+
+

@@ -1,0 +1,287 @@
+/**Main**/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Metrophobic", serif;
+    font-style: normal;
+}
+a {
+    text-decoration: none;
+}
+.main-wrap {
+    /*Main*/
+    display: flex;
+    justify-content: space-between;
+}
+.main-head {
+    /*Side nav appearance*/
+    width: 25%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #057437;
+    transition: 0.1s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+.main-nav {
+    width: 100%;
+}
+.navbar {
+    /*Side nav size*/
+    width: 100%;
+}
+.navbar-nav {
+    /*Side nav head text formation (vertical)*/
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    justify-content: space-between;
+}
+.main-head .main-nav .navbar .navbar-nav .title {
+    /*Side nav head text spacing/alignment*/
+    padding: 4px 12px;
+    border-bottom: 1px solid #2a5f98;
+    width: 200px;
+    margin: 0 auto;
+    transition: 0.1s ease-in-out;
+}
+.main-wrap .main-head.active .main-nav .navbar .navbar-nav .title {
+    /*Side Nav Head Text*/
+    padding: 40px 12px;
+    color: #fff;
+}
+.footer-nav-bar {
+    /*Line above settings button*/
+    border-top: 1px solid #2a5f98;
+    background-color: #013d7d;
+    text-align: center;
+}
+.nav-list {
+    /*Placement of buttons in side*/
+    margin: 0;
+    padding: 10px 10px;
+}
+.request-dropdown,
+.report-dropdown {
+    /*Request Dropdown Menu*/
+    display: none;
+    transition: 0.3s ease-in-out;
+}
+.request-dropdown.show,
+.report-dropdown.show {
+    /*For closed dropdown menu*/
+    display: flex;
+    gap: 7px;
+    flex-direction: column;
+}
+.dropdown-item {
+    /*Dropdown Buttons  e.g Certs, Permit, Clearance*/
+    list-style: none;
+}
+.dropdown-item a {
+    /*Dropdown Button text*/
+    padding: 2.5px;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    left: 80px;
+}
+.dropdown-item:hover {
+    background-color: #013d7d;
+}
+.nav-list .nav-list-item {
+    /* Pang edit ng icon kapag di naka expand sa side panel */
+    list-style: none;
+    padding: 15px 10px;
+    transition: 0.1s ease;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+#request-link span i:hover{
+    background: #012953;
+}
+.nav-list-item:hover {
+    /*Side nav button hover*/
+    background: #012953;
+}
+.link-text {
+    /*Side nav text Settings*/
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    left: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding: 0 20px;
+}
+.nav-list-item i {
+    /*Side nav button symbols*/
+    margin-right: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+#request-dropdown-logo {
+    /*Adjust down arrow in side nav*/
+    margin-left: 57px;
+}
+#report-dropdown-logo {
+    /*Adjust down arrow in side nav*/
+    margin-left: 72px;
+}
+
+/**Main Content**/
+.showcase {
+    /*Main Page Size*/
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    transition: 0.1s ease-in-out;
+    background-color: #fff;
+    /*For main page bg color*/
+}
+.showcase.width {
+    width: 100%;
+}
+.overlay {
+    /*Main White Space settings*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: none;
+    /*Must be none*/
+    display: flex;
+    flex-direction: row;
+}
+.showcase .head {
+    /*Main Page header*/
+    padding: 5px 20px;
+}
+.account {
+    /*Account button/Session ID button*/
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    border: none;
+    outline: 0;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 10px;
+    border-radius: 5px;
+    transition: 0.2s ease;
+    gap: 10px;
+    z-index: 1;
+    width: inherit;
+}
+.account:hover {
+    /*Account/Session ID hover*/
+    background: #fff;
+    color: #013d7d;
+}
+.account i {
+    /*Account/Session ID symbol*/
+    font-size: 25px;
+}
+.account h1 {
+    /*Account/Session text*/
+    font-size: 18px;
+    font-weight: lighter;
+}
+.floating-menu a, .floating-menu p,.floating-menu h3 {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    font-family: "Metrophobic", serif;
+    transition: 0.1s ease-in-out;
+}
+.floating-menu a{
+    text-decoration: none;
+    padding: 10px;
+    color: #fff;
+    background-color: #012953;
+    width: 250px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
+.floating-menu h3{
+    font-size: 25px;
+}
+.floating-menu p {
+    font-size: 20px;
+}
+.floating-menu a:hover{
+    background-color: #012953;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.floating-menu {
+    position: absolute;
+    color: #000000;
+    display: none;
+
+}
+.floating-menu.show {
+    display: block;
+    background-color: #fff;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.account.active {
+    background-color: #fff;
+    color: #013d7d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.account.active:hover {
+    background-color: #ececec;
+    color: #013d7d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.head:hover button {
+    background-color: #fff;
+    color: #013d7d;
+}
+.head button.active {
+    background-color: #fff;
+    color: #013d7d;
+}
+.header-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #057437;
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+.style-six {
+    border: 0;
+    height: 0;
+    border-bottom: 1px solid #013d7d;
+}
+
+/*Contents of dashboard*/
+.content {
+    position: absolute;
+    z-index: 1;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    padding: 95px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #0000000c;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-collapse: collapse;
+}

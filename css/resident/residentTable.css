@@ -1,0 +1,1175 @@
+/**Main**/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+}
+.main-wrap {
+  /*Main*/
+  display: flex;
+  justify-content: space-between;
+}
+.main-head {
+  /*Side nav appearance*/
+  width: 15%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #013d7d;
+  transition: 0.3s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+.main-nav {
+  width: 100%;
+}
+.navbar {
+  /*Side nav size*/
+  width: 100%;
+}
+.navbar-nav {
+  /*Side nav head text formation (vertical)*/
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-between;
+}
+.main-head .main-nav .navbar .navbar-nav .title {
+  /*Side nav head text spacing/alignment*/
+  padding: 4px 12px;
+  border-bottom: 1px solid #2a5f98;
+  width: 200px;
+  margin: 0 auto;
+  transition: 0.1s ease-in-out;
+}
+.main-wrap .main-head.active .main-nav .navbar .navbar-nav .title {
+  /*Side Nav Head Text*/
+  padding: 40px 12px;
+  color: #fff;
+}
+.footer-nav-bar {
+  /*Line above settings button*/
+  border-top: 1px solid #2a5f98;
+  background-color: #013d7d;
+  text-align: center;
+}
+.nav-list {
+  /*Placement of buttons in side*/
+  margin: 0;
+  padding: 10px 10px;
+}
+.resident-dropdown, .request-dropdown,
+.report-dropdown, .accounts-dropdown {
+  /*Request Dropdown Menu*/
+  display: none;
+  transition: 0.3s ease-in-out;
+}
+.resident-dropdown.show, .request-dropdown.show,
+.report-dropdown.show, .accounts-dropdown.show {
+  /*For closed dropdown menu*/
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+}
+
+.dropdown-item {
+  /*Dropdown Buttons  e.g Certs, Permit, Clearance*/
+  list-style: none;
+}
+.dropdown-item a {
+  /*Dropdown Button text*/
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  left: 80px;
+}
+.dropdown-item:hover {
+  background-color: #013d7d;
+}
+.nav-list .nav-list-item {
+  /* Pang edit ng icon kapag di naka expand sa side panel */
+  padding-left: 25px;
+  list-style: none;
+  padding: 15px 10px 10px 15px;
+  transition: 0.1s ease;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#request-link span i:hover{
+  background: #012953;
+}
+
+#accounts-link span i:hover{
+  background: #012953;
+}
+.nav-list-item:hover {
+  /*Side nav button hover*/
+  background: #012953;
+}
+.link-text {
+  /*Side nav text Settings*/
+  color: #fff;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  left: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+.nav-list-item i {
+  /*Side nav button symbols*/
+  font-size: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+#resident-dropdown-logo{
+  margin-left: 72px;
+}
+
+#request-dropdown-logo {
+  /*Adjust down arrow in side nav*/
+  margin-left: 57px;
+}
+#report-dropdown-logo {
+  /*Adjust down arrow in side nav*/
+  margin-left: 72px;
+}
+
+#accounts-dropdown-logo{
+  margin-left: 33px
+}
+
+/**Main Content**/
+.showcase {
+  /*Main Page Size*/
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  transition: 0.1s ease-in-out;
+  background-color: #fff;
+  /*For main page bg color*/
+}
+.showcase.width {
+  width: 100%;
+}
+.overlay {
+  /*Main White Space settings*/
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  /*Must be none*/
+  display: flex;
+  flex-direction: row;
+}
+.showcase .head {
+  /*Main Page header*/
+  padding: 5px;
+}
+.account {
+  /*Account button/Session ID button*/
+  flex-direction: row;
+  background: transparent;
+  border: none;
+  outline: 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 10px;
+  border-radius: 5px;
+  transition: 0.2s ease;
+  gap: 10px;
+  z-index: 1;
+  width: inherit;
+  margin-left: auto;
+  margin-right: 50px;
+}
+.account:hover {
+  /*Account/Session ID hover*/
+  background: #fff;
+  color: #013d7d;
+}
+.account i {
+  /*Account/Session ID symbol*/
+  font-size: 25px;
+}
+.account h1 {
+  /*Account/Session text*/
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+
+.account{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 8px;
+  align-items: center;
+}
+
+
+.account i, .account p {
+  /* This ensures both elements align properly */
+  display: flex;
+  align-items: center;
+  margin: 0; /* Remove any default margins */
+}
+
+.floating-menu a, .floating-menu p,.floating-menu h3 {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.1s ease-in-out;
+}
+.floating-menu a{
+  text-decoration: none;
+  padding: 10px;
+  color: #fff;
+  background-color: #012953;
+  width: 250px;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+}
+.floating-menu h3{
+  font-size: 25px;
+  margin-top: -25px;
+  margin-bottom: -10px;
+}
+.floating-menu p {
+  font-size: 20px;
+}
+.floating-menu a:hover{
+  background-color: #012953;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.floating-menu {
+  position: absolute;
+  color: #000000;
+  display: none;
+  right: 0;
+  top: 4rem;
+  left: auto;
+  margin-right: 50px;
+
+}
+.floating-menu.show {
+  display: block;
+  background-color: #fff;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.account.active {
+  background-color: #fff;
+  color: #013d7d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.account.active:hover {
+  background-color: #ececec;
+  color: #013d7d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.head:hover button {
+  background-color: #fff;
+  color: #013d7d;
+}
+.head button.active {
+  background-color: #fff;
+  color: #013d7d;
+}
+.header-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Keep full width */
+  background-color: #013d7d;
+  padding: 10px 20px; /* Add side padding */
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end; /* Push .account to the far right */
+}
+.style-six {
+  border: 0;
+  height: 0;
+  border-bottom: 1px solid #013d7d;
+}
+
+/*Contents of dashboard*/
+.content-resident {
+  z-index: 1;
+  height: 100vh; /* Full viewport height */
+  padding: 95px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #0000000c;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+/* Sidebar styles */
+.main-head {
+  width: 19%;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 100;
+}
+
+/* When sidebar is NOT active (hidden) */
+.main-head:not(.active) {
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+Adjust showcase when sidebar is hidden
+.main-head:not(.active) + .showcase {
+  margin-left: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Base hamburger styles */
+.hamburger {
+  background: #012953;
+  border: none;
+  cursor: pointer;
+  padding: 25.5px 15px 25.5px 15px ;
+  transition: all 0.3s ease;
+  display: none; /* Hidden by default */
+  color: #fff; /* Icon color */
+  font-size: 1.5rem;
+}
+
+.hamburger:hover{
+  background-color: #012347;
+
+}
+
+/* Show hamburger when sidebar is collapsed or on mobile */
+.main-head.collapsed .hamburger,
+
+  .hamburger {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+  }
+
+
+/* Centered position when collapsed */
+.main-head.collapsed .hamburger {
+  position: relative;
+  left: 0;
+  transform: translateX(0);
+}
+
+/* Animation for smooth transition */
+.main-head {
+  transition: width 0.3s ease;
+}
+
+.main-head.collapsed .hamburger i {
+  transition: transform 0.3s ease;
+}
+
+/* When sidebar is collapsed */
+.main-head.collapsed {
+  width: 70px; /* Just wide enough for icons */
+  transition: width 0.5s ease;
+}
+
+.main-head.collapsed .link-text {
+  display: none; /* Hide text labels */
+}
+
+.main-head.collapsed .navbar-nav {
+  align-items: center; /* Center icons */
+  margin-top: 40px;
+}
+
+.main-head.collapsed .nav-list-item {
+  justify-content: center; /* Center icons */
+  padding: 12px 20px 12px 20px; /* Adjust padding */
+}
+
+.main-head.collapsed .title h1 {
+  display: none; /* Hide title text */
+}
+
+.main-head.collapsed .title p {
+  display: none; /* Hide username */
+}
+
+.main-head.collapsed .dropdown-item {
+  display: none; /* Hide dropdown items */
+}
+
+.main-head.collapsed .resident-dropdown,
+.main-head.collapsed .request-dropdown,
+.main-head.collapsed .report-dropdown,
+.main-head.collapsed .accounts-dropdown {
+  display: none !important;
+}
+
+/* CENTERIZED LOGOS */
+.main-head.collapsed li.nav-list-item , #resident-link.nav-list-item.main-head.collapsed{
+  text-align: center;
+} 
+
+
+
+/* Title styles - visible state */
+.title {
+  opacity: 1;
+  visibility: visible;
+  transition: 
+     0.3s ease,
+     0.3s ease;
+  overflow: hidden; /* Prevents content from peeking during transition */
+}
+
+/* Collapsed state - hides title with fade */
+.main-head.collapsed .title {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  transition: 
+     0.3s ease,
+     0.3s ease,
+     0.3s ease,
+    padding 0.3s ease,
+     0.3s ease;
+}
+
+
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.link-text {
+  transition: 
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    width 0.3s ease;
+  opacity: 1;
+  transform: translateX(0);
+  width: auto;
+  display: inline-block;
+}
+
+/* For the dropdown arrows */
+.nav-list-item i.fa-caret-down {
+  transition: opacity 0.2s ease;
+}
+
+/* Collapsed state styles */
+.main-head.collapsed .link-text {
+  opacity: 0;
+  transform: translateX(-10px);
+  width: 0;
+  pointer-events: none;
+}
+
+.main-head.collapsed .fa-caret-down {
+  opacity: 0;
+}
+
+/* Keep main icons visible */
+.main-head.collapsed .nav-link > i:not(.fa-caret-down) {
+  opacity: 1;
+  margin-right: 0; /* Remove any spacing */
+}
+
+
+/* Smooth transition for the sidebar width */
+.main-head {
+  transition: width 0.3s ease;
+}
+
+/* Title fade animation */
+.title {
+  transition: 
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    height 0.3s ease,
+    padding 0.3s ease,
+    margin 0.3s ease;
+}
+
+.main-head.collapsed .title {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure icons remain centered */
+.main-head.collapsed .nav-link {
+  justify-content: center;
+}
+
+/* Fix for dropdown arrows positioning */
+#resident-dropdown-logo,
+#request-dropdown-logo,
+#report-dropdown-logo,
+#accounts-dropdown-logo {
+  transition: margin 0.3s ease;
+}
+
+.main-head.collapsed #resident-dropdown-logo,
+.main-head.collapsed #request-dropdown-logo,
+.main-head.collapsed #report-dropdown-logo,
+.main-head.collapsed #accounts-dropdown-logo {
+  margin-left: 0;
+}
+
+/* ===== ICON HOVER EFFECT ===== */
+.nav-list-item {
+  position: relative; /* Needed for pseudo-element positioning */
+  transition: all 0.3s ease;
+}
+
+/* Create a border effect using a pseudo-element */
+.nav-list-item:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px; /* Adjust based on your desired size */
+  width: 2px; /* Initial border thickness */
+  background: #fff; /* Border color */
+  border-radius: 0 2px 2px 0;
+  transition: all 0.3s ease;
+}
+
+/* Make border grow on hover */
+.nav-list-item:hover::before {
+  width: 6px; /* Expanded border thickness */
+}
+
+/* Adjust icon size on hover */
+.nav-list-item:hover i {
+  transform: scale(1.1); /* Slightly enlarge icon */
+  transition: transform 0.3s ease;
+}
+
+/* Ensure dropdown arrows don't get affected */
+.nav-list-item:hover .fa-caret-down {
+  transform: none !important;
+}
+
+/* For collapsed state */
+.main-head.collapsed .nav-list-item:hover::before {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; /* Full width highlight */
+  height: 4px; /* Thin underline style */
+  border-radius: 4px;
+  top: auto;
+  bottom: 0;
+}
+
+/* DATE TIME API */
+.datetime {
+  display: flex;
+  position: absolute;
+  left: 0px;
+  flex-direction: row;
+  gap: 20px;
+  background-color: transparent;
+  padding: 20px;
+}
+.day, .time, .date {
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-weight: bolder;
+  color: #fff;
+
+}
+
+
+.dropdown-item a {
+  position: relative;
+  left: 0; /* Reset left positioning */
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 1.7rem;
+  display: block; /* Ensure full-width click area */
+  color: #fff; /* Match your theme */
+  text-decoration: none;
+}
+
+.faIconSize{
+  font-size: 1.75em;
+}
+
+.faIconSize-1-25{
+  font-size: 1.25em;
+}
+
+
+/* For larger screens (1920x1080 and above) */
+@media (min-width: 1920px) {
+  .main-head {
+      width: 15%; /* Default to 15% for larger screens */
+  }
+}
+
+/* For smaller screens (below 1600px width) */
+@media (max-width: 1599px) {
+  .main-head {
+      width: 19%; /* Wider sidebar for smaller screens */
+  }
+}
+
+.sidebar-profile-image{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* General Table Styling */
+table {
+  border-collapse: collapse;
+  height: 100%;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  table-layout: auto;
+  width: 100%;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #1e3a5f;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  word-wrap: break-word;
+  /* word-break: break-word; */
+  color: #333;
+}
+
+tbody tr:hover {
+  background-color: #eaf4ff;
+}
+thead {
+  background-color: #2e2e2e; /* Dark gray */
+}
+
+thead p {
+  color: white;
+}
+
+/* Buttons */
+button {
+  padding: 8px 12px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+/* Search Bar */
+.search-bar {
+  padding-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #0073e6;
+}
+
+
+.add-resident {
+  padding: 10px 8px;
+  background: #0073e6;
+  border-radius: 50px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-resident:hover {
+  background-color: #005bb5;
+}
+
+.done-add-resident {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.done-add-resident:hover {
+  background-color: #cc0000;
+}
+
+.form-row td {
+  text-align: center;
+}
+
+.form-row td button {
+  width: 50px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-row td button:hover {
+  background-color: #005bb5;
+}
+
+.crud {
+  display: flex;
+  flex-direction: column;
+}
+
+tbody td button {
+  margin: 0 auto;
+}
+
+.form-row {
+  display: none;
+}
+
+form input[type="text"], form input[type="number"] {
+  background-color: #f9f9f9;
+  border: 1px solid #d3d3d3;
+  padding: 10px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus, form input[type="number"]:focus {
+  border-color: #0073e6;
+}
+
+select {
+  background-color: #f9f9f9;
+  border: 1px solid #d3d3d3;
+  padding: 10px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #0073e6;
+}
+
+/* Modal base styles add */
+.modal-overlay-add {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+.modal-overlay-add.is-active-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-add {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  margin: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #0073e6;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.modal-content-add {
+  padding: 1rem;
+}
+
+/* Form styling */
+.form-group-add {
+  margin-bottom: 1rem;
+}
+
+.form-group-add label-add {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group-add input-add {
+  width: 95%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button styling */
+.button-add {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-add:hover, .button-add:focus {
+  background-color: #005bb5;
+  outline: none;
+}
+
+.button-add:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #0073e6;
+}
+
+/* Close button styling */
+.modal-close-add {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  color: white;
+}
+
+.form-group-add label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group-add input {
+  width: 99%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group-add select {
+  width: 99%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Modal base styles Update */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-overlay.is-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  margin: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #0073e6;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.modal-content {
+  padding: 1rem;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 99%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button styling */
+.button {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover, .button:focus {
+  background-color: #005bb5;
+  outline: none;
+}
+
+.button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #0073e6;
+}
+
+/* Close button styling */
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  color: white;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 99%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group select {
+  width: 99%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#message-body-add {
+  width: 99%;
+  min-height: 1rem;
+  max-height: 10rem;
+  resize: vertical;
+  overflow-y: auto;
+}
+
+textarea {
+  padding: 7px;
+}
+
+input[type="submit"] {
+  float: right;
+  margin: 5px 10px 20px 0px;
+  background-color: #044b91;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #005bb5;
+}
+
+/* FOR VIEW */
+
+/* Modal base styles View */
+.modal-overlay-view {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-overlay-view.is-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-view {
+  background-color: #fff;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  margin: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #0073e6;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.modal-content-view {
+  padding: 1rem;
+}
+
+/* Form styling */
+.form-group-view {
+  margin-bottom: 1rem;
+}
+
+.form-group-view label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group-view input,
+.form-group-view textarea {
+  width: 99%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9; /* Read-only appearance */
+}
+
+.form-group-view textarea {
+  min-height: 1rem;
+  max-height: 10rem;
+  resize: vertical;
+  overflow-y: auto;
+  padding: 7px;
+}
+
+/* Button styling */
+.button-close-view {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+  margin: 5px 10px 20px 0px;
+}
+
+.button-close-view:hover,
+.button-close-view:focus {
+  background-color: #005bb5;
+  outline: none;
+}
+
+.button-close-view:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #0073e6;
+}
+
+/* Close button styling */
+.modal-close-view {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  color: white;
+}
+
+.table-container {
+  width: 100%;
+}

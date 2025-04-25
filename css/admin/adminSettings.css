@@ -1,0 +1,759 @@
+:root {
+    --nav-bg: #1E3A8A;
+    --nav-active: rgba(255, 255, 255, 0.15);
+    --nav-text: #f8f9fa;
+    --nav-width: 25%;
+    --transition-speed: 0.25s;
+    --primary-color: #1E40AF;
+    --secondary-color: #F3F4F6;
+    --text-color: #1F2937;
+    --accent-color: #3B82F6;
+    --danger-color: #EF4444;
+    --success-color: #10B981;
+    --transition: all 0.3s ease;
+    --button-height: 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.permission { display: none; }
+
+#settings-content {
+    position: absolute;
+    z-index: 1;     
+    height: 100vh;
+    width: 100%;
+    padding: 95px 18px;
+    display: flex;
+    flex-direction: column;
+    background-color: #0000000c;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-collapse: collapse;
+}
+
+.settings-div {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    width: var(--nav-width);
+    background: #013d7d;
+    color: var(--nav-text);
+    padding: 16px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 8px 0 0 8px;
+}
+
+.settings-nav h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--nav-text);
+    padding: 8px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 8px;
+}
+
+.settings-nav button {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 12px;
+    color: var(--nav-text);
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    position: relative;
+}
+
+.settings-nav button:hover {
+    background-color: #012953;
+    transform: scale(1.02);
+}
+
+.settings-nav button.active {
+    background-color: var(--nav-active);
+    font-weight: 500;
+}
+
+.settings-nav button.active::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.settings-nav button p {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.settings-main-content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background: var(--secondary-color);
+    font-family: 'Inter', sans-serif;
+}
+
+.section {
+    display: none;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+}
+
+.section.active {
+    display: block;
+}
+
+.template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.template-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.add-template-btn, #add-payment-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: var(--button-height);
+    line-height: var(--button-height);
+}
+
+.add-template-btn:hover, #add-payment-btn:hover {
+    background: #2563EB;
+}
+
+.template-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 12px;
+}
+
+.template-item {
+    background: #ffffff;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.template-item:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.template-img img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.template-item p {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 12px;
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.document-container {
+    padding: 12px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    border-top: 1px solid #E5E7EB;
+    background: #ffffff;
+}
+
+.document-container a {
+    flex: 1;
+    text-align: center;
+    padding: 8px 0;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-color);
+    background: #F9FAFB;
+    transition: background 0.2s ease, color 0.2s ease;
+    height: 36px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-document-btn {
+    background: #F3F4F6;
+    color: var(--accent-color);
+}
+
+.download-document-btn {
+    background: #F3F4F6;
+    color: #4B5563;
+}
+
+.view-document-btn:hover {
+    background: var(--accent-color);
+    color: #ffffff;
+}
+
+.download-document-btn:hover {
+    background: #4B5563;
+    color: #ffffff;
+}
+
+.uploadDocumentForm {
+    padding: 12px;
+    border-top: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.uploadDocumentForm input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.uploadDocumentForm button {
+    width: 100%;
+    padding: 0;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: var(--button-height);
+    line-height: var(--button-height);
+}
+
+.uploadDocumentForm button:hover {
+    background: #2563EB;
+}
+
+.price-form {
+    padding: 12px;
+    border-top: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.price-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent-color);
+}
+
+.price-container label {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.input-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+}
+
+.input-price label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+    width: 100%;
+}
+
+.input-price input[type="number"] {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.input-price[style*="display: none"],
+.input-price[hidden] {
+    display: none !important;
+}
+
+.edit-template-btn, .delete-template-btn {
+    width: calc(100% - 24px);
+    margin: 8px 12px;
+    padding: 8px 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    height: 36px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-template-btn {
+    background: var(--success-color);
+    color: #ffffff;
+}
+
+.delete-template-btn {
+    background: #F3F4F6;
+    color: var(--danger-color);
+    border: 1px solid #E5E7EB;
+}
+
+.edit-template-btn:hover {
+    background: #059669;
+}
+
+.delete-template-btn:hover {
+    background: var(--danger-color);
+    color: #ffffff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    max-width: 500px;
+    margin: 10% auto;
+    padding: 24px;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+    color: #6B7280;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.modal-content label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.modal-content input {
+    padding: 8px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.modal-content button {
+    padding: 0;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: var(--button-height);
+    line-height: var(--button-height);
+}
+
+.modal-content button:hover {
+    background: #2563EB;
+}
+
+/* New styles for cancel button and modal button container */
+.cancel-btn {
+    background: #6B7280;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: #4B5563;
+}
+
+.modal-btn-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+}
+
+.modal-btn-container button {
+    flex: 1;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: var(--button-height);
+    line-height: var(--button-height);
+}
+
+/* New styles for payment modal to match edit template modal */
+#add-payment-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Matches .modal */
+    z-index: 1000;
+}
+
+#add-payment-modal .modal-content {
+    background: white;
+    max-width: 500px;
+    margin: 10% auto;
+    padding: 24px;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box; /* Matches .modal-content */
+}
+
+#add-payment-modal .close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 24px;
+    color: #6B7280;
+    cursor: pointer; /* Matches .close */
+}
+
+#add-payment-modal h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px; /* Matches .modal-content h2 */
+}
+
+#add-payment-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%; /* Matches .modal-content form */
+}
+
+#add-payment-modal label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color); /* Matches .modal-content label */
+}
+
+#add-payment-modal input {
+    padding: 8px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px; /* Matches .modal-content input */
+}
+
+#add-payment-modal button {
+    padding: 0;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: var(--button-height);
+    line-height: var(--button-height); /* Matches .modal-content button */
+}
+
+#add-payment-modal button:hover {
+    background: #2563EB; /* Matches .modal-content button:hover */
+}
+
+.payment {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.payment h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 12px;
+}
+
+.payment img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.payment form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Unchanged to preserve .payment-form */
+}
+
+.payment label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.payment input {
+    padding: 8px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.btn-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-container button {
+    flex: 1;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    height: var(--button-height);
+    line-height: var(--button-height);
+}
+
+.update-btn {
+    background: var(--accent-color);
+    color: white;
+}
+
+.remove-qr-btn {
+    background: var(--success-color);
+    color: white;
+}
+
+.delete-payment-btn {
+    background: var(--danger-color);
+    color: white;
+}
+
+.update-btn:hover {
+    background: #2563EB;
+}
+
+.remove-qr-btn:hover {
+    background: #059669;
+}
+
+.delete-payment-btn:hover {
+    background: #DC2626;
+}
+
+.permission {
+    display: none;
+    padding: 16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.permission.active {
+    display: block;
+}
+
+.permission h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.permission label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+.permission input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent-color);
+}
+
+.no-templates {
+    text-align: center;
+    font-size: 16px;
+    color: #6B7280;
+    padding: 24px;
+}
+
+@media (max-width: 992px) {
+    .settings-div {
+        flex-direction: column;
+    }
+
+    .settings-nav {
+        width: 100%;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .settings-main-content {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    #settings-content {
+        padding: 70px 12px;
+    }
+
+    .settings-nav button {
+        font-size: 14px;
+        height: 44px;
+    }
+
+    .template-container {
+        grid-template-columns: 1fr;
+    }
+
+    .template-item {
+        max-width: 100%;
+    }
+
+    .document-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .document-container a {
+        width: 100%;
+    }
+
+    .btn-container {
+        flex-direction: column;
+    }
+
+    .btn-container button {
+        width: 100%;
+    }
+
+    .modal-content, #add-payment-modal .modal-content {
+        margin: 15% auto;
+        padding: 16px;
+        max-width: 90%; /* Responsive adjustment for both modals */
+    }
+
+    .modal-btn-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .modal-btn-container button {
+        width: 100%;
+    }
+}

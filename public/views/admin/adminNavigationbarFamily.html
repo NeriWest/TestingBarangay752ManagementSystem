@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Barangay Report</title>
+  <!-- State persistence meta tag -->
+  <meta name="sidebar-collapsed" content="false" id="sidebar-meta">
+  <script>
+    // Prevent transitions during page load
+    document.documentElement.classList.add('no-transitions');
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.documentElement.classList.remove('no-transitions');
+      }, 100);
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/admin/officialAdminBootstrap.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar" data-collapsed="false">
+      <div class="sidebar-header">
+        <div class="logo-container" id="sidebar-logo">
+          <img src="../../../img/Barangay Logo.png" alt="E-Barangay Logo" class="logo">
+          <span class="logo-text">BARANGAY 752</span>
+        </div>
+        <button class="toggle-btn" id="toggle-sidebar">
+          <i class="fas fa-bars nav-icon"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-items">
+          <a href="../../../index.php" class="nav-item" data-tooltip="Home">
+            <i class="fas fa-home nav-icon"></i>
+            <span class="nav-label">Home</span>
+          </a>
+          <a href="adminNavigationDashboard.html" class="nav-item" data-tooltip="Dashboard">
+            <i class="fas fa-tachometer-alt nav-icon"></i>
+            <span class="nav-label">Dashboard</span>
+          </a>
+
+          <!-- People Accordion -->
+          <div class="nav-item accordion" data-tooltip="People">
+            <div class="accordion-header">
+              <i class="fas fa-users nav-icon"></i>
+              <span class="nav-label">People</span>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-content">
+              <a href="adminNavigationbarResident.html" class="accordion-item">Resident</a>
+              <a href="adminNavigationbarOfficial.html" class="accordion-item">Official</a>
+              <a href="adminNavigationbarFamily.html" class="accordion-item">Family</a>
+            </div>
+          </div>
+
+          <!-- Accounts Accordion -->
+          <div class="nav-item accordion" data-tooltip="Accounts">
+            <div class="accordion-header">
+              <i class="fas fa-user-circle nav-icon"></i>
+              <span class="nav-label">Accounts</span>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-content">
+              <a href="adminNavigationbarResidentAccount.html" class="accordion-item">Resident Account</a>
+              <a href="adminNavigationbarOfficialAccount.html" class="accordion-item">Official Account</a>
+            </div>
+          </div>
+
+          <!-- Reports Accordion -->
+          <div class="nav-item accordion" data-tooltip="Reports">
+            <div class="accordion-header">
+              <i class="fas fa-file-alt nav-icon"></i>
+              <span class="nav-label">Reports</span>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </div>
+            <div class="accordion-content">
+              <a href="adminNavigationbarBlotter.html" class="accordion-item">Blotter</a>
+              <a href="adminNavigationbarComplaint.html" class="accordion-item">Complaint</a>
+              <a href="adminNavigationbarIncident.html" class="accordion-item">Incident</a>
+            </div>
+          </div>
+
+          <a href="/announcements" class="nav-item" data-tooltip="Announcements">
+            <i class="fas fa-bell nav-icon"></i>
+            <span class="nav-label">Announcements</span>
+          </a>
+          <a href="/settings" class="nav-item" data-tooltip="Settings">
+            <i class="fas fa-cog nav-icon"></i>
+            <span class="nav-label">Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <img src="" alt="User" class="user-avatar">
+          <div class="user-details">
+            <p class="user-name">Juan Dela Cruz</p>
+            <p class="user-role">Resident</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content" id="main-content">
+      <!-- Top Navigation Bar -->
+      <section class="top-navbar">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand">
+            <div class="datetime">
+              <div class="day-time-container">
+                <span class="day me-2"></span>
+                <span class="date me-2"></span>
+                <span class="time"></span>
+              </div>
+            </div>
+
+            <div class="ms-auto">
+              <div class="dropdown">
+                <button class="btn btn-user dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user me-2"></i>
+                  <?php
+                  if (isset($_SESSION['first_name'])) {
+                    echo htmlspecialchars($_SESSION['first_name']) . ' ' . htmlspecialchars($_SESSION['last_name']);
+                  } else {
+                    echo 'Guest';
+                  }
+                  ?>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                  <li><h6 class="dropdown-header">You're logged in as</h6></li>
+                  <li><h6 class="dropdown-header username"><?php echo $_SESSION['username'] ?? ''; ?></h6></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="adminViewProfileController.php"><i class="fas fa-user-circle me-2"></i>View Profile</a></li>
+                  <li><a class="dropdown-item" href="../logoutController.php"><i class="fas fa-sign-out-alt me-2"></i>Log Out</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+
+      <button class="mobile-toggle-btn" id="mobile-toggle">
+        <i class="fas fa-bars"></i> <span class="menu-text">Menu</span>
+      </button>
+
+      <div class="content">
+        <h2>Family Content</h2>
+        <p>This is where your main content goes.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../../js/officialAdminBootstrap.js"></script>
+</body>
+</html>
